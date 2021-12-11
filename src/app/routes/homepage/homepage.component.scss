@@ -1,0 +1,34 @@
+::ng-deep .owl-item {
+    width: 255px !important;
+}
+
+::ng-deep .owl-item+.owl-item {
+    margin-right: 30px;
+}
+
+::ng-deep .owl-theme {
+    height: 450px !important;
+}
+
+::ng-deep .owl-prev {
+    position : absolute !important;
+    top      : -64px;
+    right    : 50px;
+    color    : white;
+    font-size: 45px;
+    opacity  : 0.6;
+}
+
+::ng-deep .owl-next {
+    position : absolute !important;
+    top      : -64px;
+    right    : 0;
+    color    : white;
+    font-size: 45px;
+    opacity  : 0.6;
+}
+
+::ng-deep .owl-prev:hover,
+::ng-deep .owl-next:hover {
+    opacity: 1;
+}
