@@ -2,22 +2,22 @@ import { Genre } from "./genre";
 
 export class Movie {
     id!: number;
-    country_id!: number;
+    countryId!: number;
     title!: string;
     name!: string;
     rate!: number;
-    release_date!: number;
+    releaseDate!: number;
     runtime!: number;
     overview!: string;
-    trailer_url!: string;
-    movie_url!: string;
-    poster_url!: string;
+    trailerUrl!: string;
+    movieUrl!: string;
+    posterUrl!: string;
     age_restricted!: number;
-    is_active!: Boolean;
-    is_delete!: Boolean;
-    created_date!: number;
-    updated_date!: number;
-    created_user_id!: string;
-    updated_user_id!: string;
+    isActive!: Boolean;
+    isDelete!: Boolean;
+    createdDate!: number;
+    updatedDate!: number;
+    createdUserId!: string;
+    updatedUserId!: string;
     genres!: Genre[];
 }

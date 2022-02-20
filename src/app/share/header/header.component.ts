@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { SpinnerService } from 'src/app/core/services/spinner.service';
 
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
     defaultAvatar: String = '../../../assets/img/default-avatar.png'
 
-    constructor(private authService: SocialAuthService, private spinner: SpinnerService) { }
+    constructor(private authService: SocialAuthService, private spinner: SpinnerService, private router: Router) { }
 
     ngOnInit(): void {
         this.spinner.show();
@@ -29,7 +30,7 @@ export class HeaderComponent implements OnInit {
     signOut(): void {
         this.spinner.show();
         this.authService.signOut().then((data: any) => {
-            console.log(data);
+            this.router.navigate(["/login"]);
             this.spinner.hide();
         });
     }

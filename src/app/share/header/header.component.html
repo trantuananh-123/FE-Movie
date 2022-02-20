@@ -75,12 +75,12 @@
                                 [src]="currentUser != null ? currentUser.photoUrl : defaultAvatar" alt=""
                                 referrerpolicy="no-referrer">
 
-                            <a *ngIf="!isLoggedIn" [routerLink]="['/login']" class="header__sign-in">
+                            <a *ngIf="!isLoggedIn" routerLink="/login" class="header__sign-in">
                                 <i class="icon ion-ios-log-in"></i>
                                 <span>sign in</span>
                             </a>
 
-                            <a *ngIf="isLoggedIn" [routerLink]="['/']" routerLinkActive="router-link-active"
+                            <a *ngIf="isLoggedIn" routerLink="/" routerLinkActive="router-link-active"
                                 class="header__sign-in" (click)="signOut()">
                                 <i class="icon ion-ios-log-in"></i>
                                 <span>sign out</span>
