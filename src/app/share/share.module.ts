@@ -5,23 +5,30 @@ import { ShareRoutingModule } from './share-routing.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
-	declarations: [
-		HeaderComponent,
-		FooterComponent
-	],
-	imports: [
-		CommonModule,
-		ShareRoutingModule,
-		CarouselModule,
-	],
-	exports: [
-		CarouselModule,
-		HeaderComponent,
-		FooterComponent
-	],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    declarations: [
+        HeaderComponent,
+        FooterComponent
+    ],
+    imports: [
+        CommonModule,
+        ShareRoutingModule,
+        CarouselModule,
+        MatSliderModule,
+        ReactiveFormsModule
+    ],
+    exports: [
+        CarouselModule,
+        HeaderComponent,
+        FooterComponent,
+        ReactiveFormsModule,
+        MatSliderModule,
+        MatFormFieldModule
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ShareModule { }
