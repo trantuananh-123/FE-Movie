@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/authentication/auth-service.service';
 import { TokenStorageService } from 'src/app/core/authentication/token-storage.service';
 import { SpinnerService } from 'src/app/core/services/spinner.service';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
     selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     currentUser!: SocialUser;
     isLoggedIn!: Boolean;
 
-    constructor(private socialAuthService: SocialAuthService, private router: Router, private spinner: SpinnerService, private fb: FormBuilder, private authService: AuthService, private toastr: ToastrService, private tokenService: TokenStorageService) { }
+    constructor(private globalService: GlobalService, private socialAuthService: SocialAuthService, private router: Router, private spinner: SpinnerService, private fb: FormBuilder, private authService: AuthService, private toastr: ToastrService, private tokenService: TokenStorageService) { }
 
     ngOnInit(): void {
         this.spinner.hide();
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
     }
 
     signIn(): void {
+        let roles: any = [];
         this.submitted = true;
         if (this.signInForm.valid) {
             this.spinner.show();
@@ -49,7 +51,18 @@ export class LoginComponent implements OnInit {
                 if (data.status == 20000) {
                     this.tokenService.saveToken(data.data.accessToken);
                     this.tokenService.saveUser(data.data.user.id);
+                    this.tokenService.saveUserName(data.data.user.username);
+                    data.data.user.roles.forEach((element: any) => {
+                        roles.push(element.name);
+                    });
+                    this.tokenService.saveUserRole(roles);
+                    this.globalService.setUsername(data.data.username);
+                    this.globalService.setAvatar('../../../assets/img/default_avatar.png');
+                    this.globalService.setIsAdmin(this.tokenService.isAdmin());
+                    this.router.navigateByUrl('/home');
+                    this.spinner.hide();
                     this.toastr.success("Sign in successfully!", "Sign in");
+                    this.router.navigate(["/"]);
                 } else {
                     this.toastr.error("Sign in failed!", "Sign in");
                 }
@@ -67,6 +80,11 @@ export class LoginComponent implements OnInit {
         this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data: any) => {
             console.log(data);
             this.currentUser = data;
+            console.log(data.photoUrl);
+            this.globalService.setAvatar(data.photoUrl);
+            this.tokenService.saveUserName(data.username);
+            this.globalService.setUsername(data.username);
+            // this.globalService.setIsLoggedIn(true);
             this.isLoggedIn = (this.currentUser != null);
             this.router.navigate(["/"]);
             this.spinner.hide();
@@ -80,6 +98,9 @@ export class LoginComponent implements OnInit {
             console.log(data);
             this.currentUser = data;
             this.isLoggedIn = (this.currentUser != null);
+            this.tokenService.saveUserName(data.username);
+            this.globalService.setUsername(data.username);
+            // this.globalService.setIsLoggedIn(true);
             this.router.navigate(["/"]);
             this.spinner.hide();
         }, () => {

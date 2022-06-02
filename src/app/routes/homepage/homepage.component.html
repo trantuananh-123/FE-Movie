@@ -29,15 +29,15 @@
                             <div class="card card--big">
                                 <div class="card__cover">
                                     <img src="{{m.posterUrl}}" alt="">
-                                    <a href="#" class="card__play">
+                                    <a [routerLink]="['/detail', m.id]" class="card__play">
                                         <i class="icon ion-ios-play"></i>
                                     </a>
                                 </div>
                                 <div class="card__content">
-                                    <h3 class="card__title"><a href="#">{{m.title}}</a></h3>
+                                    <h3 class="card__title"><a [routerLink]="['/detail', m.id]">{{m.title}}</a></h3>
                                     <span class="card__category">
-                                        <a href="#">Action</a>
-                                        <a href="#">Triler</a>
+                                        <a [routerLink]="['/detail', m.id]">Action</a>
+                                        <a [routerLink]="['/detail', m.id]">Triler</a>
                                     </span>
                                     <span class="card__rate"><i class="icon ion-ios-star"></i>{{m.rate}}</span>
                                 </div>
@@ -108,7 +108,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="card__cover">
                                         <img src="{{m.posterUrl}}" alt="">
-                                        <a href="#" class="card__play">
+                                        <a [routerLink]="['/detail', m.id]" class="card__play">
                                             <i class="icon ion-ios-play"></i>
                                         </a>
                                     </div>
@@ -116,9 +116,10 @@
 
                                 <div class="col-12 col-sm-8">
                                     <div class="card__content">
-                                        <h3 class="card__title"><a href="#">{{m.title}}</a></h3>
+                                        <h3 class="card__title"><a [routerLink]="['/detail', m.id]">{{m.title}}</a></h3>
                                         <span class="card__category">
-                                            <a *ngFor="let g of m.genres; let i = index" href="#">{{g.name}}</a>
+                                            <a *ngFor="let g of m.genres; let i = index"
+                                                [routerLink]="['/detail', m.id]">{{g.name}}</a>
                                         </span>
 
                                         <div class="card__wrap">
@@ -149,14 +150,15 @@
                         <div class="card">
                             <div class="card__cover">
                                 <img src="{{m.posterUrl}}" alt="">
-                                <a href="#" class="card__play">
+                                <a [routerLink]="['/detail', m.id]" class="card__play">
                                     <i class="icon ion-ios-play"></i>
                                 </a>
                             </div>
                             <div class="card__content">
-                                <h3 class="card__title"><a href="#">{{m.title}}</a></h3>
+                                <h3 class="card__title"><a [routerLink]="['/detail', m.id]">{{m.title}}</a></h3>
                                 <span class="card__category">
-                                    <a *ngFor="let g of m.genres; let i = index" href="#">{{g.name}}</a>
+                                    <a *ngFor="let g of m.genres; let i = index"
+                                        [routerLink]="['/detail', m.id]">{{g.name}}</a>
                                 </span>
                                 <span class="card__rate"><i class="icon ion-ios-star"></i>{{m.rate}}</span>
                             </div>
@@ -174,14 +176,14 @@
                         <div class="card">
                             <div class="card__cover">
                                 <img src="{{m.posterUrl}}" alt="">
-                                <a href="#" class="card__play">
+                                <a [routerLink]="['/detail', m.id]" class="card__play">
                                     <i class="icon ion-ios-play"></i>
                                 </a>
                             </div>
                             <div class="card__content">
-                                <h3 class="card__title"><a href="#">{{m.title}}</a></h3>
+                                <h3 class="card__title"><a [routerLink]="['/detail', m.id]">{{m.title}}</a></h3>
                                 <span class="card__category">
-                                    <a *ngFor="let g of m.genres" href="#">{{g.name}}</a>
+                                    <a *ngFor="let g of m.genres" [routerLink]="['/detail', m.id]">{{g.name}}</a>
                                 </span>
                                 <span class="card__rate"><i class="icon ion-ios-star"></i>{{m.rate}}</span>
                             </div>
@@ -199,14 +201,15 @@
                         <div class="card">
                             <div class="card__cover">
                                 <img src="{{m.posterUrl}}" alt="">
-                                <a href="#" class="card__play">
+                                <a style="font-size: 17px;" [routerLink]="['/detail', m.id]" class="card__play">
                                     <i class="icon ion-ios-play"></i>
                                 </a>
                             </div>
                             <div class="card__content">
-                                <h3 class="card__title"><a href="#">{{m.title}}</a></h3>
+                                <h3 class="card__title"><a [routerLink]="['/detail', m.id]">{{m.title}}</a></h3>
                                 <span class="card__category">
-                                    <a *ngFor="let g of m.genres; let i = index" href="#">{{g.name}}</a>
+                                    <a *ngFor="let g of m.genres; let i = index"
+                                        [routerLink]="['/detail', m.id]">{{g.name}}</a>
                                 </span>
                                 <span class="card__rate"><i class="icon ion-ios-star"></i>{{m.rate}}</span>
                             </div>
@@ -237,14 +240,14 @@
                 <div class="card">
                     <div class="card__cover">
                         <img src="{{m.posterUrl}}" alt="">
-                        <a href="#" class="card__play">
+                        <a [routerLink]="['/detail', m.id]" class="card__play">
                             <i class="icon ion-ios-play"></i>
                         </a>
                     </div>
                     <div class="card__content">
-                        <h3 class="card__title"><a href="#">{{m.title}}</a></h3>
+                        <h3 class="card__title"><a [routerLink]="['/detail', m.id]">{{m.title}}</a></h3>
                         <span class="card__category">
-                            <a *ngFor="let g of m.genres" href="#">{{g.name}}</a>
+                            <a *ngFor="let g of m.genres" [routerLink]="['/detail', m.id]">{{g.name}}</a>
                         </span>
                         <span class="card__rate"><i class="icon ion-ios-star"></i>{{m.rate}}</span>
                     </div>
@@ -256,7 +259,8 @@
             <div class="col-12" *ngIf="paginationLimit < newestMovie.length" (click)="showMoreItems()">
                 <a href="javascript:void(0)" class="section__btn">Show more</a>
             </div>
-            <div class="col-12" *ngIf="paginationLimit >= newestMovie.length" (click)="showLessItems()">
+            <div class="col-12" *ngIf="paginationLimit >= newestMovie.length && newestMovie.length != 0"
+                (click)="showLessItems()">
                 <a href="javascript:void(0)" class="section__btn">Show less</a>
             </div>
             <!-- end section btn -->

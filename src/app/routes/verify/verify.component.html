@@ -1,0 +1,43 @@
+<div class="sign section--bg" data-bg="../../../assets/img/section/section.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="sign__content">
+                    <!-- authorization form -->
+                    <form [formGroup]="verifyForm" class="sign__form">
+                        <a href="index.html" class="sign__logo">
+                            <img src="../../../assets/img/logo.svg" alt="">
+                        </a>
+
+                        <div class="sign__group">
+                            <input formControlName="username" type="text" class="sign__input"
+                                placeholder="Username or Email"
+                                [ngClass]="{'invalid': (form.username.touched || form.username.dirty || submitted) && form.username.errors}">
+                            <div *ngIf="(form.username.touched || form.username.dirty || submitted)">
+                                <mat-error class="custom__mat-error" *ngIf="form.username.errors?.required">
+                                    Username is required</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="sign__group">
+                            <input formControlName="verifyToken" type="text" class="sign__input" placeholder="Token"
+                                [ngClass]="{'invalid': (form.verifyToken.touched || form.verifyToken.dirty || submitted) && form.verifyToken.errors}">
+                            <div *ngIf="(form.verifyToken.touched || form.verifyToken.dirty || submitted)">
+                                <mat-error class="custom__mat-error" *ngIf="form.verifyToken.errors?.required">
+                                    Verify Token is required</mat-error>
+                            </div>
+                        </div>
+
+                        <button class="sign__btn" type="button" (click)="verify()">Verfiy</button>
+
+                        <span style="margin-top: 50px" class="sign__text">Don't have an account? <a
+                                routerLink="/register">Sign up!</a></span>
+
+                        <span class="sign__text"><a href="#">Forgot password?</a></span>
+                    </form>
+                    <!-- end authorization form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

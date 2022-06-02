@@ -2506,6 +2506,7 @@ ul {
 
 .filter__item-btn span:before,
 .filter__item-btn span:after {
+    display              : none !important;
     content              : '';
     position             : absolute;
     display              : block;

@@ -39,10 +39,8 @@ export class AuthService {
         }, httpOption);
     }
 
-    signUp(username: any, password: any): Observable<any> {
-        return this.http.post<any>(BASE_URL + "/user/sign-up", {
-            username, password
-        }, httpOption);
+    signUp(body: any): Observable<any> {
+        return this.http.post<any>(BASE_URL + "/user/sign-up", body);
     }
 
     existedUsername(username: any): Observable<any> {
@@ -51,5 +49,9 @@ export class AuthService {
 
     existedEmail(email: any): Observable<any> {
         return this.http.get<any>(BASE_URL + "/user/exist-email/" + email);
+    }
+
+    verify(body: any): Observable<any> {
+        return this.http.post<any>(BASE_URL + "/verify", body);
     }
 }

@@ -53,7 +53,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
     genreList: Genre[] = []
 
     selectedItem = 0;
-    paginationLimit: number = 2;
+    paginationLimit: number = 7;
     startPage: number = 0;
 
     constructor(private movieService: MovieService, private genreService: GenreService, private lazyService: LazyLoadService, private spinner: SpinnerService) { }
@@ -71,9 +71,9 @@ export class HomepageComponent implements OnInit, AfterViewInit {
             const currentDate = new Date();
             const previousDate = new Date().setMonth(currentDate.getMonth() - 2);
             this.newestMovie = this.movies.filter((movie: any) => {
-                const releasesDate = new Date(movie.release_date).getTime();
+                const releasesDate = new Date(movie.releaseDate).getTime();
                 return releasesDate <= currentDate.getTime() && releasesDate >= previousDate;
-            })
+            });
             this.getGenre(data.data[0]);
             console.log(this.newestMovie);
             this.spinner.hide();
@@ -86,7 +86,6 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         this.spinner.show();
         this.genreService.getAll().subscribe((data: any) => {
             this.genreList = data.data;
-            console.log(data);
             this.spinner.hide();
         }, () => {
             this.spinner.hide();
@@ -97,7 +96,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         this.spinner.show();
         this.movieService.getByGenre(genre).subscribe((data: any) => {
             this.movieList = data.data;
-            console.log(data);
+            this.spinner.hide();
         }, () => {
             this.spinner.hide();
         });

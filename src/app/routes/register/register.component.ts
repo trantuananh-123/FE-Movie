@@ -71,13 +71,13 @@ export class RegisterComponent implements OnInit {
         this.submitted = true;
         if (this.registerForm.valid) {
             this.spinner.show();
-            const user = this.registerForm.value;
+            console.log(this.registerForm.value);
             if (this.registerForm.valid) {
-                this.authService.signUp(user.username, user.password).subscribe((data: any) => {
+                this.authService.signUp(this.registerForm.value).subscribe((data: any) => {
                     console.log(data);
                     if (data.status = 20000) {
                         this.toastr.success("Sign up successfully!", "Sign up");
-                        this.router.navigate(['/login']);
+                        this.router.navigate(['/verify']);
                     } else {
                         this.toastr.error("Sign up failed!", "Sign up");
                     }

@@ -15,50 +15,26 @@
                         <ul class="header__nav">
                             <!-- dropdown -->
                             <li class="header__nav-item">
-                                <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuHome"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
-
-                                <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuHome">
-                                    <li><a href="index.html">Home slideshow bg</a></li>
-                                    <li><a href="index2.html">Home static bg</a></li>
-                                </ul>
+                                <a class="dropdown-toggle header__nav-link" routerLink="/" role="button"
+                                    id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Home</a>
                             </li>
-                            <!-- end dropdown -->
-
+                            <li class="header__nav-item">
+                                <a class="dropdown-toggle header__nav-link" routerLink="/movie-list" role="button"
+                                    id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Movie List</a>
+                            </li>
                             <!-- dropdown -->
-                            <li class="header__nav-item">
-                                <a class="dropdown-toggle header__nav-link" href="#" role="button"
-                                    id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">Catalog</a>
-
-                                <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-                                    <li><a href="catalog1.html">Catalog Grid</a></li>
-                                    <li><a href="catalog2.html">Catalog List</a></li>
-                                    <li><a href="details1.html">Details Movie</a></li>
-                                    <li><a href="details2.html">Details TV Series</a></li>
-                                </ul>
-                            </li>
-                            <!-- end dropdown -->
-
-                            <li class="header__nav-item">
-                                <a href="pricing.html" class="header__nav-link">Pricing Plan</a>
-                            </li>
-
-                            <li class="header__nav-item">
-                                <a href="faq.html" class="header__nav-link">Help</a>
-                            </li>
-
-                            <!-- dropdown -->
-                            <li class="dropdown header__nav-item">
-                                <a class="dropdown-toggle header__nav-link header__nav-link--more" href="#"
-                                    role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false"><i class="icon ion-ios-more"></i></a>
+                            <li *ngIf="isAdmin" class="dropdown header__nav-item">
+                                <a style="font-size: 14px; color: #FFFFFFBF; cursor: pointer;"
+                                    class="dropdown-toggle header__nav-link header__nav-link--more" role="button"
+                                    id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Admin</a>
 
                                 <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuMore">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="signin.html">Sign In</a></li>
-                                    <li><a href="signup.html">Sign Up</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
+                                    <li><a routerLink="/add-movie">Add Movie</a></li>
+                                    <li><a routerLink="/country">Add Country</a></li>
+                                    <li><a routerLink="/genre">Add Genre</a></li>
                                 </ul>
                             </li>
                             <!-- end dropdown -->
@@ -71,16 +47,19 @@
                                 <i class="icon ion-ios-search"></i>
                             </button>
 
-                            <img *ngIf="isLoggedIn" style="border-radius: 50%; width: 40px; margin-right: 5px;"
-                                [src]="currentUser != null ? currentUser.photoUrl : defaultAvatar" alt=""
+                            <img *ngIf="username && defaultAvatar != null"
+                                style="border-radius: 50%; width: 40px; margin-right: 5px;"
+                                src="{{currentUser != null ? currentUser.photoUrl : defaultAvatar}}" alt=""
                                 referrerpolicy="no-referrer">
 
-                            <a *ngIf="!isLoggedIn" routerLink="/login" class="header__sign-in">
+                            <span *ngIf="username && defaultAvatar == null">{{ username }}</span>
+
+                            <a *ngIf="!username" routerLink="/login" class="header__sign-in">
                                 <i class="icon ion-ios-log-in"></i>
                                 <span>sign in</span>
                             </a>
 
-                            <a *ngIf="isLoggedIn" routerLink="/" routerLinkActive="router-link-active"
+                            <a *ngIf="username" routerLink="/" routerLinkActive="router-link-active"
                                 class="header__sign-in" (click)="signOut()">
                                 <i class="icon ion-ios-log-in"></i>
                                 <span>sign out</span>
