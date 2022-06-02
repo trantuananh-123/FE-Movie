@@ -1,0 +1,14 @@
+.sign {
+    background-image: url('../../../assets/img/section/section.jpg');
+    background-size : contain;
+}
+
+.invalid {
+    border: 1px solid #ff5860;
+}
+
+.custom__mat-error {
+    display   : block;
+    text-align: center;
+    margin-top: 5px;
+}

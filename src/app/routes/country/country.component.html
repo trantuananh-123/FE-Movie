@@ -1,0 +1,120 @@
+<!-- details -->
+<section class="section details">
+    <!-- details background -->
+    <div class="details__bg" data-bg="img/home/home__bg.jpg"></div>
+    <!-- end details background -->
+
+    <!-- details content -->
+    <div class="container">
+        <!-- content -->
+        <div class="card card--details">
+            <form [formGroup]="addCountry" action="#">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Country code</mat-label>
+                                <input formControlName="id" matInput placeholder="Enter country code">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Name</mat-label>
+                                <input formControlName="name" matInput placeholder="Enter name">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Create date</mat-label>
+                                <input formControlName="createdDate" matInput [matDatepicker]="picker">
+                                <mat-hint style="color: white;">MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-4 col-lg-4 text-center">
+                        <button class="sign__btn" type="button" (click)="save()">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-12">
+                <table style="width: 100%;" mat-table [dataSource]="countryList" class="mat-elevation-z8">
+
+                    <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="code">
+                        <th mat-header-cell *matHeaderCellDef> Code </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="createdDate">
+                        <th mat-header-cell *matHeaderCellDef> Created Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.createdDate | date:'dd-MM-yyyy'}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button style="display: inline-block; width: auto; padding: 0 30px; margin: 0 10px 10px 0;"
+                                class="sign__btn" type="button" (click)="edit(element)">Edit</button>
+                            <button style="display: inline-block; width: auto; padding: 0 30px;" class="sign__btn"
+                                type="button" (click)="delete(element)">Delete</button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="details__wrap">
+                <!-- availables -->
+                <div class="details__devices">
+                    <span class="details__devices-title">Available on devices:</span>
+                    <ul class="details__devices-list">
+                        <li><i class="icon ion-logo-apple"></i><span>IOS</span></li>
+                        <li><i class="icon ion-logo-android"></i><span>Android</span></li>
+                        <li><i class="icon ion-logo-windows"></i><span>Windows</span></li>
+                        <li><i class="icon ion-md-tv"></i><span>Smart TV</span></li>
+                    </ul>
+                </div>
+                <!-- end availables -->
+
+                <!-- share -->
+                <div class="details__share">
+                    <span class="details__share-title">Share with friends:</span>
+
+                    <ul class="details__share-list">
+                        <li class="facebook"><a href="#"><i class="icon ion-logo-facebook"></i></a></li>
+                        <li class="instagram"><a href="#"><i class="icon ion-logo-instagram"></i></a></li>
+                        <li class="twitter"><a href="#"><i class="icon ion-logo-twitter"></i></a></li>
+                        <li class="vk"><a href="#"><i class="icon ion-logo-vk"></i></a></li>
+                    </ul>
+                </div>
+                <!-- end share -->
+            </div>
+        </div>
+    </div>
+    <!-- end details content -->
+</section>
+<!-- end details -->

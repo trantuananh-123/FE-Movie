@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Genre } from '../core/model/genre';
 
-const BASE_URL = "http://localhost:8888/api/v1/genre";
+const BASE_URL = "http://localhost:8888/api/v1/country";
 @Injectable({
     providedIn: 'root'
 })
-export class GenreService {
+export class CountryService {
 
     constructor(private http: HttpClient) { }
 

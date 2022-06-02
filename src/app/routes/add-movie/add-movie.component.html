@@ -1,0 +1,159 @@
+<!-- details -->
+<section class="section details">
+    <!-- details background -->
+    <div class="details__bg" data-bg="img/home/home__bg.jpg"></div>
+    <!-- end details background -->
+
+    <!-- details content -->
+    <div class="container">
+        <!-- content -->
+        <div class="card card--details">
+            <form [formGroup]="addMovie" action="#">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Title</mat-label>
+                                <input formControlName="title" matInput placeholder="Enter title">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Name</mat-label>
+                                <input formControlName="name" matInput placeholder="Enter name">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Runtime</mat-label>
+                                <input formControlName="runtime" matInput placeholder="Enter runtime">
+                            </mat-form-field>
+                            <div *ngIf="(form.runtime.touched || form.runtime.dirty)">
+                                <mat-error class="custom__mat-error" *ngIf="form.runtime.errors?.pattern">
+                                    Runtime can only contains numbers</mat-error>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Description</mat-label>
+                                <input formControlName="overview" matInput placeholder="Enter description">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Age restricted</mat-label>
+                                <input formControlName="ageRestricted" matInput placeholder="Enter age restricted">
+                            </mat-form-field>
+                            <div *ngIf="(form.ageRestricted.touched || form.ageRestricted.dirty)">
+                                <mat-error class="custom__mat-error" *ngIf="form.ageRestricted.errors?.pattern">
+                                    Age restricted can only contains numbers</mat-error>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Release date</mat-label>
+                                <input formControlName="releaseDate" matInput [matDatepicker]="picker">
+                                <mat-hint style="color: white;">MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Movie Url</mat-label>
+                                <input formControlName="trailerUrl" matInput placeholder="Enter movie url">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Poster Url</mat-label>
+                                <input formControlName="posterUrl" matInput placeholder="Enter poster url">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Rate</mat-label>
+                                <input formControlName="rate" matInput placeholder="Enter movie rate">
+                            </mat-form-field>
+                            <div *ngIf="(form.rate.touched || form.rate.dirty)">
+                                <mat-error class="custom__mat-error" *ngIf="form.rate.errors?.pattern">
+                                    Rate can only contains numbers</mat-error>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <ng-select formControlName="countryId" placeholder="Country">
+                                <ng-option *ngFor="let c of countryList" [value]="c.id">{{c.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sign__group">
+                            <ng-select formControlName="genreId" [multiple]="true" placeholder="Genre">
+                                <ng-option *ngFor="let g of genreList" [value]="g.id">{{g.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-4 col-lg-4 text-center">
+                        <button class="sign__btn" type="button" (click)="save()">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <div class="details__wrap">
+                <!-- availables -->
+                <div class="details__devices">
+                    <span class="details__devices-title">Available on devices:</span>
+                    <ul class="details__devices-list">
+                        <li><i class="icon ion-logo-apple"></i><span>IOS</span></li>
+                        <li><i class="icon ion-logo-android"></i><span>Android</span></li>
+                        <li><i class="icon ion-logo-windows"></i><span>Windows</span></li>
+                        <li><i class="icon ion-md-tv"></i><span>Smart TV</span></li>
+                    </ul>
+                </div>
+                <!-- end availables -->
+
+                <!-- share -->
+                <div class="details__share">
+                    <span class="details__share-title">Share with friends:</span>
+
+                    <ul class="details__share-list">
+                        <li class="facebook"><a href="#"><i class="icon ion-logo-facebook"></i></a></li>
+                        <li class="instagram"><a href="#"><i class="icon ion-logo-instagram"></i></a></li>
+                        <li class="twitter"><a href="#"><i class="icon ion-logo-twitter"></i></a></li>
+                        <li class="vk"><a href="#"><i class="icon ion-logo-vk"></i></a></li>
+                    </ul>
+                </div>
+                <!-- end share -->
+            </div>
+        </div>
+    </div>
+    <!-- end details content -->
+</section>
+<!-- end details -->

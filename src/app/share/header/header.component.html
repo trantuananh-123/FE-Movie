@@ -1,0 +1,99 @@
+<!-- header -->
+<header class="header">
+    <div class="header__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header__content">
+                        <!-- header logo -->
+                        <a href="index.html" class="header__logo">
+                            <img src="../../../assets/img/logo.svg" alt="">
+                        </a>
+                        <!-- end header logo -->
+
+                        <!-- header nav -->
+                        <ul class="header__nav">
+                            <!-- dropdown -->
+                            <li class="header__nav-item">
+                                <a class="dropdown-toggle header__nav-link" routerLink="/" role="button"
+                                    id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Home</a>
+                            </li>
+                            <li class="header__nav-item">
+                                <a class="dropdown-toggle header__nav-link" routerLink="/movie-list" role="button"
+                                    id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Movie List</a>
+                            </li>
+                            <!-- dropdown -->
+                            <li *ngIf="isAdmin" class="dropdown header__nav-item">
+                                <a style="font-size: 14px; color: #FFFFFFBF; cursor: pointer;"
+                                    class="dropdown-toggle header__nav-link header__nav-link--more" role="button"
+                                    id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Admin</a>
+
+                                <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuMore">
+                                    <li><a routerLink="/add-movie">Add Movie</a></li>
+                                    <li><a routerLink="/country">Add Country</a></li>
+                                    <li><a routerLink="/genre">Add Genre</a></li>
+                                </ul>
+                            </li>
+                            <!-- end dropdown -->
+                        </ul>
+                        <!-- end header nav -->
+
+                        <!-- header auth -->
+                        <div class="header__auth">
+                            <button style="margin-right: 15px" class="header__search-btn" type="button">
+                                <i class="icon ion-ios-search"></i>
+                            </button>
+
+                            <img *ngIf="username && defaultAvatar != null"
+                                style="border-radius: 50%; width: 40px; margin-right: 5px;"
+                                src="{{currentUser != null ? currentUser.photoUrl : defaultAvatar}}" alt=""
+                                referrerpolicy="no-referrer">
+
+                            <span *ngIf="username && defaultAvatar == null">{{ username }}</span>
+
+                            <a *ngIf="!username" routerLink="/login" class="header__sign-in">
+                                <i class="icon ion-ios-log-in"></i>
+                                <span>sign in</span>
+                            </a>
+
+                            <a *ngIf="username" routerLink="/" routerLinkActive="router-link-active"
+                                class="header__sign-in" (click)="signOut()">
+                                <i class="icon ion-ios-log-in"></i>
+                                <span>sign out</span>
+                            </a>
+                        </div>
+                        <!-- end header auth -->
+
+                        <!-- header menu btn -->
+                        <button class="header__btn" type="button">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                        <!-- end header menu btn -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header search -->
+    <form action="#" class="header__search">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header__search-content">
+                        <input type="text" placeholder="Search for a movie, TV Series that you are looking for">
+
+                        <button type="button">search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- end header search -->
+</header>
+<!-- end header -->

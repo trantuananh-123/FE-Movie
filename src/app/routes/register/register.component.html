@@ -1,0 +1,93 @@
+<div class="sign section--bg" data-bg="../../../assets/img/section/section.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="sign__content">
+                    <!-- registration form -->
+                    <form [formGroup]="registerForm" class="sign__form">
+                        <a href="index.html" class="sign__logo">
+                            <img src="../../../assets/img/logo.svg" alt="">
+                        </a>
+
+                        <div class="sign__group">
+                            <input formControlName="username" minlength="6" maxlength="20" type="text"
+                                class="sign__input" placeholder="Username"
+                                [ngClass]="{'invalid': (registerFormControl.username.touched || registerFormControl.username.dirty || submitted) && registerFormControl.username.errors}"
+                                (change)="uniqueUsername($event)">
+                            <div
+                                *ngIf="(registerFormControl.username.touched || registerFormControl.username.dirty || submitted)">
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="registerFormControl.username.errors?.required">
+                                    Username is required</mat-error>
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="registerFormControl.username.errors?.minlength">
+                                    Username must have at least 6 characters</mat-error>
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="registerFormControl.username.errors?.existedUsername">
+                                    Username is already taken</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="sign__group">
+                            <input formControlName="email" type="text" class="sign__input" placeholder="Email"
+                                [ngClass]="{'invalid': (registerFormControl.email.touched || registerFormControl.email.dirty || submitted) && registerFormControl.email.errors}"
+                                (change)="uniqueEmail($event)">
+                            <div
+                                *ngIf="(registerFormControl.email.touched || registerFormControl.email.dirty || submitted)">
+                                <mat-error class="custom__mat-error" *ngIf="registerFormControl.email.errors?.required">
+                                    Email is required</mat-error>
+                                <mat-error class="custom__mat-error" *ngIf="registerFormControl.email.errors?.email">
+                                    Email is not in correct format</mat-error>
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="registerFormControl.email.errors?.existedEmail">
+                                    Email is already taken</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="sign__group">
+                            <input formControlName="password" type="password" class="sign__input" placeholder="Password"
+                                [ngClass]="{'invalid': (registerFormControl.password.touched || registerFormControl.password.dirty || submitted) && registerFormControl.password.errors}"
+                                (change)="matchPassword($event)">
+                            <div
+                                *ngIf="(registerFormControl.password.touched || registerFormControl.password.dirty || submitted)">
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="registerFormControl.password.errors?.required">
+                                    Password is required</mat-error>
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="registerFormControl.password.errors?.invalidPassword">
+                                    Password must have at least 8 characters,<br> an uppercase, a
+                                    lowercase and a number</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="sign__group">
+                            <input formControlName="confirmPassword" type="password" class="sign__input"
+                                placeholder="Confirm password"
+                                [ngClass]="{'invalid': (registerFormControl.confirmPassword.touched || registerFormControl.confirmPassword.dirty || submitted) && registerFormControl.confirmPassword.errors}"
+                                (change)="matchPassword($event)">
+                            <div
+                                *ngIf="(registerFormControl.confirmPassword.touched || registerFormControl.confirmPassword.dirty || submitted)">
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="registerFormControl.confirmPassword.errors?.required">
+                                    Confirm password is required</mat-error>
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="registerFormControl.confirmPassword.errors?.notMatch">
+                                    Confirm password is not match</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="sign__group sign__group--checkbox">
+                            <input id="remember" name="remember" type="checkbox" checked="checked">
+                            <label for="remember">I agree to the <a href="#">Privacy Policy</a></label>
+                        </div>
+
+                        <button class="sign__btn" type="button" (click)="signUp()">Sign up</button>
+
+                        <span class="sign__text">Already have an account? <a href="signin.html">Sign in!</a></span>
+                    </form>
+                    <!-- registration form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

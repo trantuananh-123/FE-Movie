@@ -1,0 +1,59 @@
+<div class="sign section--bg" data-bg="../../../assets/img/section/section.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="sign__content">
+                    <!-- authorization form -->
+                    <form [formGroup]="signInForm" class="sign__form">
+                        <a href="index.html" class="sign__logo">
+                            <img src="../../../assets/img/logo.svg" alt="">
+                        </a>
+
+                        <div class="sign__group">
+                            <input formControlName="username" type="text" class="sign__input"
+                                placeholder="Username or Email"
+                                [ngClass]="{'invalid': (signInFormControl.username.touched || signInFormControl.username.dirty || submitted) && signInFormControl.username.errors}">
+                            <div
+                                *ngIf="(signInFormControl.username.touched || signInFormControl.username.dirty || submitted)">
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="signInFormControl.username.errors?.required">
+                                    Username/Email is required</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="sign__group">
+                            <input formControlName="password" type="password" class="sign__input" placeholder="Password"
+                                [ngClass]="{'invalid': (signInFormControl.password.touched || signInFormControl.password.dirty || submitted) && signInFormControl.password.errors}">
+                            <div
+                                *ngIf="(signInFormControl.password.touched || signInFormControl.password.dirty || submitted)">
+                                <mat-error class="custom__mat-error"
+                                    *ngIf="signInFormControl.password.errors?.required">
+                                    Password is required</mat-error>
+                            </div>
+                        </div>
+
+                        <div class="sign__group sign__group--checkbox">
+                            <input id="remember" name="remember" type="checkbox" checked="checked">
+                            <label for="remember">Remember Me</label>
+                        </div>
+
+                        <button class="sign__btn" type="button" (click)="signIn()">Sign in</button>
+
+                        <button class="sign__btn"
+                            style="position: absolute; top: 392px; left: 165px; width: 7%; height: 25px; border-radius: 50%;"
+                            type="button" (click)="signInWithGoogle()"><i class="fab fa-google"></i></button>
+                        <button class="sign__btn"
+                            style="position: absolute; top: 392px; right: 160px; width: 6.5%; height: 25px; border-radius: 50%;"
+                            type="button" (click)="signInWithFacebook()"><i class="fab fa-facebook-f"></i></button>
+
+                        <span style="margin-top: 50px" class="sign__text">Don't have an account? <a
+                                routerLink="/register">Sign up!</a></span>
+
+                        <span class="sign__text"><a href="#">Forgot password?</a></span>
+                    </form>
+                    <!-- end authorization form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin     : 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-accent .mat-slider-track-fill {
+    background-color: #ff4081 !important;
+}
+
+.mat-slider-thumb-label {
+    background-color: #ff4081 !important;
+
+}
+
+.mat-slider-thumb {
+    background-color: #ff4081 !important;
+}
